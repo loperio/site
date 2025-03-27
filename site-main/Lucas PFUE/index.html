@@ -3,19 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Farmácia Oliveira - Medicamentos e produtos de saúde com entrega rápida em todo o país">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <title>Farmácia Oliveira - Medicamentos e Saúde</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         /* Estilos personalizados */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #c3ecc7;
-            transition: background-color 0.3s, color 0.3s;
         }
 
         .logo {
@@ -125,244 +127,319 @@
             background-color: #218838;
         }
 
-        /* Estilos para o modo escuro */
-        body.dark-mode {
-            background-color: #121212;
-            color: #ffffff;
+        /* Estilos de acessibilidade adicionados */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #28a745;
+            color: white;
+            padding: 8px;
+            z-index: 100;
         }
 
-        body.dark-mode .navbar-brand h1 {
-            color: #ffffff;
+        .skip-link:focus {
+            top: 0;
         }
 
-        body.dark-mode .inicio-fundo {
-            background-color: #1e1e1e;
+        [aria-hidden="true"] {
+            display: none;
         }
 
-        body.dark-mode .secao-tropicalia {
-            background-color: #2d2d2d;
+        p {
+            line-height: 1.6;
         }
 
-        body.dark-mode .fundo-galeria {
-            background-color: #2d2d2d;
-            color: #ffffff;
+        a:focus, 
+        button:focus, 
+        input:focus {
+            outline: 2px solid #28a745;
+            outline-offset: 2px;
         }
 
-        body.dark-mode .formulario {
-            background-color: #2d2d2d;
-            color: #ffffff;
+        .form-control:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
         }
 
-        body.dark-mode footer {
-            background-color: #1e1e1e;
-            color: #ffffff;
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
         }
 
-        body.dark-mode .btn-light {
-            background-color: #333333;
-            color: #ffffff;
+        .btn-primary:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
         }
 
-        body.dark-mode .btn-light:hover {
-            background-color: #444444;
-        }
-
-        /* Novos estilos para melhorias */
-        .search-bar {
-            margin: 20px 0;
-        }
-
-        .promo-banner {
-            background-color: #ffcc00;
-            padding: 10px;
+        /* Estilos do cronômetro */
+        .cronometro {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
             text-align: center;
+        }
+
+        .tempo {
+            font-size: 1.5rem;
             font-weight: bold;
+            color: #28a745;
+        }
+
+        .controles-cronometro {
+            margin-top: 10px;
+        }
+
+        .controles-cronometro button {
+            margin: 0 5px;
+            padding: 5px 10px;
             border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .testimonials {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .testimonial-item {
-            margin-bottom: 15px;
-        }
-
-        .faq-section {
-            margin: 20px 0;
-        }
-
-        .faq-item {
-            margin-bottom: 15px;
-        }
-
-        .newsletter {
-            background-color: #e3f2fd;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .services-section {
-            margin: 20px 0;
-        }
-
-        .service-item {
-            margin-bottom: 15px;
+            border: none;
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
+    <!-- Link para pular navegação -->
+    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
     <!-- Botão do WhatsApp Flutuante -->
-    <a href="https://wa.me/SEUNUMERO" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <img src="imagens/whatsapp-icon.png" alt="WhatsApp">
+    <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank" aria-label="Contate-nos pelo WhatsApp">
+        <img src="imagens/whatsapp-icon.png" alt="Ícone do WhatsApp - Contate-nos">
     </a>
 
     <!-- Botão de Voltar ao Topo -->
-    <button id="back-to-top" title="Voltar ao topo">↑</button>
+    <button id="back-to-top" aria-label="Voltar ao topo da página">↑</button>
 
     <header class="p-4 bg-primary text-white">
-        <nav class="container d-flex justify-content-between align-items-center">
+        <nav class="container d-flex justify-content-between align-items-center" aria-label="Navegação principal">
             <!-- Logo e Nome da Farmácia -->
             <a class="navbar-brand" href="#inicio">
-                <img src="imagens/Vermelho e Verde Minimalista Hospital do Coração Logo.png" alt="Logo da Farmácia Oliveira" class="logo" loading="lazy">
+                <img src="imagens/Vermelho e Verde Minimalista Hospital do Coração Logo.png" alt="Logo da Farmácia Oliveira - Voltar ao início" class="logo" loading="lazy">
                 <h1>Farmácia Oliveira</h1>
             </a>
             <!-- Menu de Navegação -->
             <ul class="nav">
                 <li class="nav-item"><a class="nav-link text-white" href="#inicio">Início</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="#catalogo">Catálogo</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#sobre">Sobre Nós</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#servicos">Serviços</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="#contato">Contato</a></li>
-            </ul>
-            <!-- Botão de Modo Escuro -->
-            <button id="dark-mode-toggle" class="btn btn-dark">Modo Escuro</button>
+            </ul>          
         </nav>
     </header>
 
-    <main class="container my-5">
+    <main class="container my-5" id="main-content">
         <!-- Seção Início -->
-        <section id="inicio" class="my-5">
+        <section id="inicio" class="my-5" aria-labelledby="titulo-inicio">
             <div class="inicio-fundo d-flex justify-content-between align-items-center">
                 <div class="esquerda-conteudo">
-                    <h1 class="display-4 text-white fst-italic fw-bold">Boas-vindas à Farmácia Oliveira</h1>
+                    <h1 class="display-4 text-white fst-italic fw-bold" id="titulo-inicio">Boas-vindas à Farmácia Oliveira</h1>
                     <p class="lead text-white">Sua saúde em primeiro lugar!</p>
                     <a href="#catalogo" class="btn btn-light btn-lg botao-inicio fw-semibold">Conheça nossos medicamentos</a>
+                    
+                    <!-- Cronômetro adicionado aqui -->
+                    <div class="cronometro">
+                        <h3 class="text-white">Tempo no site</h3>
+                        <div class="tempo">00:00:00</div>
+                        <div class="controles-cronometro">
+                            <button id="iniciar" class="btn btn-success">Iniciar</button>
+                            <button id="pausar" class="btn btn-warning">Pausar</button>
+                            <button id="zerar" class="btn btn-danger">Zerar</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Barra de Pesquisa -->
-        <section class="search-bar">
-            <div class="container">
-                <input type="text" class="form-control" placeholder="Pesquisar medicamentos...">
-            </div>
-        </section>
-
-        <!-- Banner de Promoções -->
-        <section class="promo-banner">
-            <div class="container">
-                <p>🔥 Promoção Relâmpago! Paracetamol com 20% de desconto. Aproveite!</p>
             </div>
         </section>
 
         <!-- Seção Sobre Nós -->
-        <section id="sobre" class="my-5 pt-6 secao-tropicalia">
-            <div class="container">
-                <h2 class="mb-4">Sobre Nós</h2>
-                <p>A Farmácia Oliveira foi fundada em 1990 com o objetivo de oferecer medicamentos de qualidade e atendimento personalizado. Nossa missão é cuidar da sua saúde com respeito e dedicação.</p>
-                <p><strong>Valores:</strong> Qualidade, transparência e compromisso com o cliente.</p>
+        <section id="sobre" class="my-5 pt-6 secao-tropicalia" aria-labelledby="titulo-sobre">
+            <div class="container d-flex align-items-center">
+                <div class="col-8">
+                    <h2 class="mb-4" id="titulo-sobre">Nossa Proposta</h2>
+                    <p class="p-2">A Farmácia Oliveira preza por atender nossos clientes com respeito e educação. Nossa equipe está preparada para atender todas as suas necessidades, com entregas rápidas e seguras em todo o território nacional. Conte conosco para cuidar da sua saúde!</p>
+                </div>
             </div>
         </section>
 
         <!-- Seção Catálogo de Medicamentos -->
-        <section id="catalogo" class="my-5">
-            <h2 class="text-center pt-5">Catálogo de Medicamentos</h2>
+        <section id="catalogo" class="my-5" aria-labelledby="titulo-catalogo">
+            <h2 class="text-center pt-5" id="titulo-catalogo">Catálogo de Medicamentos</h2>
             <div class="container p-3 mt-3 fundo-galeria">
-                <!-- Medicamentos aqui (mantenha o conteúdo original) -->
-            </div>
-        </section>
-
-        <!-- Seção de Depoimentos -->
-        <section class="testimonials">
-            <div class="container">
-                <h2 class="text-center">Depoimentos</h2>
-                <div class="testimonial-item">
-                    <p>"Ótimo atendimento e entrega rápida! Recomendo a Farmácia Oliveira." - Maria S.</p>
+                <!-- Medicamento 1 -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-4">
+                        <img src="imagens/435142_tylenol-paracetamol-500mg-20-comprimidos_l1_638204343203735158.webp" 
+                             alt="Paracetamol 500mg - Embalagem com 10 comprimidos" 
+                             class="img-fluid rounded-5" 
+                             loading="lazy">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Paracetamol 500mg</h3>
+                        <p>Alívio rápido para dores e febre. Embalagem com 10 comprimidos.</p>
+                        <p class="fw-bold">R$ 12,90</p>
+                        <button class="btn btn-primary" aria-label="Comprar Paracetamol 500mg">Pedir Online</button>
+                    </div>
                 </div>
-                <div class="testimonial-item">
-                    <p>"Preços justos e medicamentos de qualidade." - João P.</p>
+                <!-- Medicamento 2 -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-4">
+                        <img src="imagens/186305-800-450.webp" 
+                             alt="Loratadina 10mg - Embalagem com 12 comprimidos" 
+                             class="img-fluid rounded-5" 
+                             loading="lazy">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Loratadina 10mg</h3>
+                        <p>Combate aos sintomas de alergia. Embalagem com 12 comprimidos.</p>
+                        <p class="fw-bold">R$ 18,50</p>
+                        <button class="btn btn-primary" aria-label="Comprar Loratadina 10mg">Pedir Online</button>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Seção de Perguntas Frequentes -->
-        <section class="faq-section">
-            <div class="container">
-                <h2 class="text-center">Perguntas Frequentes</h2>
-                <div class="faq-item">
-                    <h3>Como faço para comprar online?</h3>
-                    <p>Basta adicionar os produtos ao carrinho e seguir o processo de checkout.</p>
+                <!-- Medicamento 3 -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-4">
+                        <img src="imagens/173136-800-899.webp" 
+                             alt="Ibuprofeno 400mg - Embalagem com 15 comprimidos" 
+                             class="img-fluid rounded-5" 
+                             loading="lazy">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Ibuprofeno 400mg</h3>
+                        <p>Anti-inflamatório para dores musculares. Embalagem com 15 comprimidos.</p>
+                        <p class="fw-bold">R$ 22,00</p>
+                        <button class="btn btn-primary" aria-label="Comprar Ibuprofeno 400mg">Pedir Online</button>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <h3>Qual o prazo de entrega?</h3>
-                    <p>O prazo de entrega é de 1 a 3 dias úteis, dependendo da sua região.</p>
+                <!-- Medicamento 4 -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-4">
+                        <img src="imagens/unnamed.jpg" 
+                             alt="Omeprazol 20mg - Embalagem com 14 cápsulas" 
+                             class="img-fluid rounded-5" 
+                             loading="lazy">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Omeprazol 20mg</h3>
+                        <p>Indicado para gastrite e refluxo. Embalagem com 14 cápsulas.</p>
+                        <p class="fw-bold">R$ 25,90</p>
+                        <button class="btn btn-primary" aria-label="Comprar Omeprazol 20mg">Pedir Online</button>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Seção de Newsletter -->
-        <section class="newsletter">
-            <div class="container">
-                <h2 class="text-center">Assine nossa Newsletter</h2>
-                <form>
-                    <input type="email" class="form-control" placeholder="Digite seu e-mail" required>
-                    <button type="submit" class="btn btn-primary mt-2">Assinar</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Seção de Serviços -->
-        <section id="servicos" class="services-section">
-            <div class="container">
-                <h2 class="text-center">Nossos Serviços</h2>
-                <div class="service-item">
-                    <h3>Vacinação</h3>
-                    <p>Oferecemos vacinas para todas as idades.</p>
+                <!-- Medicamento 5 -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-4">
+                        <img src="imagens/dipirona_s_dica_500_mg_e_unha_de_gato_-_30_c_psulas_branco_1_1_.png" 
+                             alt="Dipirona Sódica 500mg - Embalagem com 10 comprimidos" 
+                             class="img-fluid rounded-5" 
+                             loading="lazy">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Dipirona Sódica 500mg</h3>
+                        <p>Analgésico e antitérmico. Embalagem com 10 comprimidos.</p>
+                        <p class="fw-bold">R$ 9,90</p>
+                        <button class="btn btn-primary" aria-label="Comprar Dipirona Sódica 500mg">Pedir Online</button>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <h3>Testes Rápidos</h3>
-                    <p>Testes para COVID-19, dengue e outras doenças.</p>
+                <!-- Medicamento 6 -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-4">
+                        <img src="imagens/7896004702223.jpg" 
+                             alt="Amoxicilina 500mg - Embalagem com 12 cápsulas" 
+                             class="img-fluid rounded-5" 
+                             loading="lazy">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Amoxicilina 500mg</h3>
+                        <p>Antibiótico para infecções bacterianas. Embalagem com 12 cápsulas.</p>
+                        <p class="fw-bold">R$ 35,00</p>
+                        <button class="btn btn-primary" aria-label="Comprar Amoxicilina 500mg">Pedir Online</button>
+                    </div>
+                </div>
+                <!-- Medicamento 7 -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-4">
+                        <img src="imagens/01_412006_01.webp" 
+                             alt="Salbutamol Spray - Frasco com 200 doses" 
+                             class="img-fluid rounded-5" 
+                             loading="lazy">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Salbutamol Spray</h3>
+                        <p>Broncodilatador para asma e bronquite. Frasco com 200 doses.</p>
+                        <p class="fw-bold">R$ 45,00</p>
+                        <button class="btn btn-primary" aria-label="Comprar Salbutamol Spray">Pedir Online</button>
+                    </div>
+                </div>
+                <!-- Medicamento 8 -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-4">
+                        <img src="imagens/91082_fluconazol-150mg-1-cpr-p129817_z1_638285681320363822.webp" 
+                             alt="Fluconazol 150mg - Embalagem com 2 cápsulas" 
+                             class="img-fluid rounded-5" 
+                             loading="lazy">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Fluconazol 150mg</h3>
+                        <p>Antifúngico para tratamento de micoses. Embalagem com 2 cápsulas.</p>
+                        <p class="fw-bold">R$ 28,50</p>
+                        <button class="btn btn-primary" aria-label="Comprar Fluconazol 150mg">Pedir Online</button>
+                    </div>
+                </div>
+                <!-- Medicamento 9 -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-4">
+                        <img src="imagens/Cloridrato-de-Ranitidina-150mg-Generico-Medley-10-Comprimidos.webp" 
+                             alt="Ranitidina 150mg - Embalagem com 10 comprimidos" 
+                             class="img-fluid rounded-5" 
+                             loading="lazy">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Ranitidina 150mg</h3>
+                        <p>Indicado para azia e má digestão. Embalagem com 10 comprimidos.</p>
+                        <p class="fw-bold">R$ 14,90</p>
+                        <button class="btn btn-primary" aria-label="Comprar Ranitidina 150mg">Pedir Online</button>
+                    </div>
+                </div>
+                <!-- Medicamento 10 -->
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-4">
+                        <img src="imagens/metformina-850mg-30com-geolab.webp" 
+                             alt="Cloridrato de Metformina 500mg - Embalagem com 30 comprimidos" 
+                             class="img-fluid rounded-5" 
+                             loading="lazy">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Cloridrato de Metformina 500mg</h3>
+                        <p>Para controle de diabetes tipo 2. Embalagem com 30 comprimidos.</p>
+                        <p class="fw-bold">R$ 19,90</p>
+                        <button class="btn btn-primary" aria-label="Comprar Cloridrato de Metformina 500mg">Pedir Online</button>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Seção Contato -->
-        <section id="contato" class="my-5">
+        <section id="contato" class="my-5" aria-labelledby="titulo-contato">
             <div class="container p-5 d-flex justify-content-center">
                 <div class="col-md-8 col-lg-10 rounded-5 formulario bg-light p-4">
-                    <h2 class="mb-4">Entre em Contato</h2>
+                    <h2 class="mb-4" id="titulo-contato">Entre em Contato</h2>
                     <form>
                         <div class="form-group mb-3">
-                            <label for="nome">Nome</label>
+                            <label for="nome">Nome completo</label>
                             <input type="text" id="nome" name="nome" class="form-control rounded-3 mt-1"
-                                   placeholder="Digite seu nome completo" required>
+                                   placeholder="Digite seu nome completo" required aria-required="true">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="email">Email</label>
+                            <label for="email">Endereço de email</label>
                             <input type="email" id="email" name="email" class="form-control rounded-3 mt-1"
-                                   placeholder="Digite seu email" required>
+                                   placeholder="Digite seu email" required aria-required="true">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="mensagem">Mensagem</label>
+                            <label for="mensagem">Sua mensagem</label>
                             <textarea id="mensagem" name="mensagem" class="form-control rounded-4 mt-2" rows="4"
-                                      placeholder="Escreva sua mensagem" required></textarea>
+                                      placeholder="Escreva sua mensagem" required aria-required="true"></textarea>
                         </div>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary btn-lg rounded-pill tamanho-botao">Enviar mensagem</button>
@@ -380,39 +457,8 @@
         <a href="#" aria-label="Instagram"><i class="bi bi-instagram mx-2 text-white"></i></a>
         <a href="#" aria-label="TikTok"><i class="bi bi-tiktok mx-2 text-white"></i></a>
         <p class="mt-3">Desenvolvido por Lucas e Gustavo. Projeto fictício sem fins comerciais.</p>
-        <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
     </footer>
 
-    <!-- Scripts -->
-    <script>
-        // Botão de Modo Escuro
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Modo Claro' : 'Modo Escuro';
-            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
-        });
-
-        // Verificar modo escuro ao carregar a página
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            darkModeToggle.textContent = 'Modo Claro';
-        }
-
-        // Botão de Voltar ao Topo
-        window.onscroll = function() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById('back-to-top').style.display = 'block';
-            } else {
-                document.getElementById('back-to-top').style.display = 'none';
-            }
-        };
-
-        document.getElementById('back-to-top').addEventListener('click', () => {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        });
-    </script>
-</body>
-
-</html>
+    <div class="contador">
+        <p>Olá contador</p>
+      </div>

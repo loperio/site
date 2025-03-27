@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Farmácia Oliveira - Medicamentos e Saúde</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #c3ecc7;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-brand h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #28a745;
+            margin: 0;
+        }
+
+        .inicio-fundo {
+            background: url('fundo-inicio.jpg') no-repeat center center/cover;
+            padding: 100px 20px;
+            border-radius: 15px;
+        }
+
+        .btn-light {
+            background-color: #ffffff;
+            color: #28a745;
+            border: none;
+        }
+
+        .btn-light:hover {
+            background-color: #070707;
+        }
+
+        .secao-tropicalia {
+            background-color: #e3f2fd;
+            padding: 50px 0;
+            border-radius: 15px;
+        }
+
+        .fundo-galeria {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .formulario {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #28a745;
+        }
+
+        /* Botão do WhatsApp flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .whatsapp-float img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Botão de Voltar ao Topo */
+        #back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        #back-to-top:hover {
+            background-color: #218838;
+        }
+
+        /* Estilos para o modo escuro */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        body.dark-mode .navbar-brand h1 {
+            color: #ffffff;
+        }
+
+        body.dark-mode .inicio-fundo {
+            background-color: #1e1e1e;
+        }
+
+        body.dark-mode .secao-tropicalia {
+            background-color: #2d2d2d;
+        }
+
+        body.dark-mode .fundo-galeria {
+            background-color: #2d2d2d;
+            color: #ffffff;
+        }
+
+        body.dark-mode .formulario {
+            background-color: #2d2d2d;
+            color: #ffffff;
+        }
+
+        body.dark-mode footer {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        body.dark-mode .btn-light {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        body.dark-mode .btn-light:hover {
+            background-color: #444444;
+        }
+
+        /* Novos estilos para melhorias */
+        .search-bar {
+            margin: 20px 0;
+        }
+
+        .promo-banner {
+            background-color: #ffcc00;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .testimonials {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .testimonial-item {
+            margin-bottom: 15px;
+        }
+
+        .faq-section {
+            margin: 20px 0;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+        }
+
+        .newsletter {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .services-section {
+            margin: 20px 0;
+        }
+
+        .service-item {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Botão do WhatsApp Flutuante -->
+    <a href="https://wa.me/SEUNUMERO" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <img src="imagens/whatsapp-icon.png" alt="WhatsApp">
+    </a>
+
+    <!-- Botão de Voltar ao Topo -->
+    <button id="back-to-top" title="Voltar ao topo">↑</button>
+
+    <header class="p-4 bg-primary text-white">
+        <nav class="container d-flex justify-content-between align-items-center">
+            <!-- Logo e Nome da Farmácia -->
+            <a class="navbar-brand" href="#inicio">
+                <img src="imagens/Vermelho e Verde Minimalista Hospital do Coração Logo.png" alt="Logo da Farmácia Oliveira" class="logo" loading="lazy">
+                <h1>Farmácia Oliveira</h1>
+            </a>
+            <!-- Menu de Navegação -->
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link text-white" href="#inicio">Início</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#catalogo">Catálogo</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#sobre">Sobre Nós</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#servicos">Serviços</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#contato">Contato</a></li>
+            </ul>
+            <!-- Botão de Modo Escuro -->
+            <button id="dark-mode-toggle" class="btn btn-dark">Modo Escuro</button>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <!-- Seção Início -->
+        <section id="inicio" class="my-5">
+            <div class="inicio-fundo d-flex justify-content-between align-items-center">
+                <div class="esquerda-conteudo">
+                    <h1 class="display-4 text-white fst-italic fw-bold">Boas-vindas à Farmácia Oliveira</h1>
+                    <p class="lead text-white">Sua saúde em primeiro lugar!</p>
+                    <a href="#catalogo" class="btn btn-light btn-lg botao-inicio fw-semibold">Conheça nossos medicamentos</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Barra de Pesquisa -->
+        <section class="search-bar">
+            <div class="container">
+                <input type="text" class="form-control" placeholder="Pesquisar medicamentos...">
+            </div>
+        </section>
+
+        <!-- Banner de Promoções -->
+        <section class="promo-banner">
+            <div class="container">
+                <p>🔥 Promoção Relâmpago! Paracetamol com 20% de desconto. Aproveite!</p>
+            </div>
+        </section>
+
+        <!-- Seção Sobre Nós -->
+        <section id="sobre" class="my-5 pt-6 secao-tropicalia">
+            <div class="container">
+                <h2 class="mb-4">Sobre Nós</h2>
+                <p>A Farmácia Oliveira foi fundada em 1990 com o objetivo de oferecer medicamentos de qualidade e atendimento personalizado. Nossa missão é cuidar da sua saúde com respeito e dedicação.</p>
+                <p><strong>Valores:</strong> Qualidade, transparência e compromisso com o cliente.</p>
+            </div>
+        </section>
+
+        <!-- Seção Catálogo de Medicamentos -->
+        <section id="catalogo" class="my-5">
+            <h2 class="text-center pt-5">Catálogo de Medicamentos</h2>
+            <div class="container p-3 mt-3 fundo-galeria">
+                <!-- Medicamentos aqui (mantenha o conteúdo original) -->
+            </div>
+        </section>
+
+        <!-- Seção de Depoimentos -->
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="text-center">Depoimentos</h2>
+                <div class="testimonial-item">
+                    <p>"Ótimo atendimento e entrega rápida! Recomendo a Farmácia Oliveira." - Maria S.</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Preços justos e medicamentos de qualidade." - João P.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Perguntas Frequentes -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="text-center">Perguntas Frequentes</h2>
+                <div class="faq-item">
+                    <h3>Como faço para comprar online?</h3>
+                    <p>Basta adicionar os produtos ao carrinho e seguir o processo de checkout.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Qual o prazo de entrega?</h3>
+                    <p>O prazo de entrega é de 1 a 3 dias úteis, dependendo da sua região.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Newsletter -->
+        <section class="newsletter">
+            <div class="container">
+                <h2 class="text-center">Assine nossa Newsletter</h2>
+                <form>
+                    <input type="email" class="form-control" placeholder="Digite seu e-mail" required>
+                    <button type="submit" class="btn btn-primary mt-2">Assinar</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços -->
+        <section id="servicos" class="services-section">
+            <div class="container">
+                <h2 class="text-center">Nossos Serviços</h2>
+                <div class="service-item">
+                    <h3>Vacinação</h3>
+                    <p>Oferecemos vacinas para todas as idades.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Testes Rápidos</h3>
+                    <p>Testes para COVID-19, dengue e outras doenças.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contato" class="my-5">
+            <div class="container p-5 d-flex justify-content-center">
+                <div class="col-md-8 col-lg-10 rounded-5 formulario bg-light p-4">
+                    <h2 class="mb-4">Entre em Contato</h2>
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" class="form-control rounded-3 mt-1"
+                                   placeholder="Digite seu nome completo" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control rounded-3 mt-1"
+                                   placeholder="Digite seu email" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" class="form-control rounded-4 mt-2" rows="4"
+                                      placeholder="Escreva sua mensagem" required></textarea>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill tamanho-botao">Enviar mensagem</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="text-center p-3 bg-dark text-white">
+        <p>Acesse nossas redes:</p>
+        <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp mx-2 text-white"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram mx-2 text-white"></i></a>
+        <a href="#" aria-label="TikTok"><i class="bi bi-tiktok mx-2 text-white"></i></a>
+        <p class="mt-3">Desenvolvido por Lucas e Gustavo. Projeto fictício sem fins comerciais.</p>
+        <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Botão de Modo Escuro
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Modo Claro' : 'Modo Escuro';
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+        });
+
+        // Verificar modo escuro ao carregar a página
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.textContent = 'Modo Claro';
+        }
+
+        // Botão de Voltar ao Topo
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById('back-to-top').style.display = 'block';
+            } else {
+                document.getElementById('back-to-top').style.display = 'none';
+            }
+        };
+
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        });
+    </script>
+</body>
+
+</html>
